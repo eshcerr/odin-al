@@ -2,12 +2,10 @@ package alc;
 
 import "core:os"
 
-when os.OS == "windows" {
-	foreign import openal "OpenAL32.lib";
-} else when os.OS == "linux" {
-	foreign import openal "system:openal";
-} else {
-	#assert(false);
+when ODIN_OS == .Windows {
+	foreign import "OpenAL32.lib"
+} when ODIN_OS == .Linux {
+	foreign import "system:openal"
 }
 
 FALSE                            :: 0;
